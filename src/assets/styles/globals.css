@@ -74,3 +74,36 @@
     @apply bg-background text-foreground;
   }
 }
+
+.TooltipContent {
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+  animation: opacityIn 0.1s ease-in;
+}
+
+.TooltipContent[data-state='open'] {
+  animation: opacityIn 0.1s ease-in;
+}
+
+.TooltipContent[data-state='closed'] {
+  animation: opacityOut 0.1s ease-out;
+}
+
+@keyframes opacityIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.9);
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes opacityOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
