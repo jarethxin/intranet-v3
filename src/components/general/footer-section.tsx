@@ -8,12 +8,12 @@ import { Button } from "../ui/button";
 
 export function Footer() {
   return (
-    <section className="bg-gray-900 text-white py-20">
+    <section className="bg-gray-800 text-white py-20">
       <div className="container mx-auto px-4">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button className="border border-gray-700 hover:bg-gray-700 text-white font-bold rounded">
+              <Button className="border border-gray-700 bg-transparent hover:bg-gray-700 text-white font-bold rounded">
                 Hover
               </Button>
             </TooltipTrigger>

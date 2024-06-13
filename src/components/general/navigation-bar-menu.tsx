@@ -10,6 +10,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { useToast } from "@/components/ui/use-toast";
+import { Link } from "react-router-dom";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -55,7 +56,7 @@ export function NavigationBarMenu() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -87,8 +88,8 @@ export function NavigationBarMenu() {
               </ListItem>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
+        </NavigationMenuItem> */}
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
@@ -103,19 +104,28 @@ export function NavigationBarMenu() {
               ))}
             </ul>
           </NavigationMenuContent>
+        </NavigationMenuItem> */}
+        <NavigationMenuItem className="cursor-pointer">
+          <Link to="/">
+            <NavigationMenuLink
+              className={navigationMenuTriggerStyle()}
+              onClick={() => {
+                toast({
+                  title: "Hey",
+                  description: ":D",
+                });
+              }}
+            >
+              Home
+            </NavigationMenuLink>
+          </Link>
         </NavigationMenuItem>
         <NavigationMenuItem className="cursor-pointer">
-          <NavigationMenuLink
-            className={navigationMenuTriggerStyle()}
-            onClick={() => {
-              toast({
-                title: "Hey",
-                description: ":D",
-              });
-            }}
-          >
-            Documentation
-          </NavigationMenuLink>
+          <Link to="/login">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Login
+            </NavigationMenuLink>
+          </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
