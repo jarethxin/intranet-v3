@@ -1,14 +1,17 @@
 import { Footer } from "@/components/general/footer-section";
+import { HeroSection1 } from "@/components/general/hero-section-1";
+import { HeroSection2 } from "@/components/general/hero-section-2";
+import { HeroSection3 } from "@/components/general/hero-section-3";
 import { NavigationBarMenu } from "@/components/general/navigation-bar-menu";
 
 export function Home() {
   return (
-    <>
+    <main>
       <NavigationBarMenu />
-      <section>Section 1</section>
-      <section>Section 2</section>
-      <section>Section 3</section>
+      <HeroSection1 />
+      <HeroSection2 />
+      <HeroSection3 />
       <Footer />
-    </>
+    </main>
   );
 }
