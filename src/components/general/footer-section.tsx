@@ -12,13 +12,15 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger asChild className="ml-10 mb-5">
+            <TooltipTrigger asChild>
               <Button className="border border-gray-700 hover:bg-gray-700 text-white font-bold rounded">
                 Hover
               </Button>
             </TooltipTrigger>
-            <TooltipContent className="TooltipContent" >
-              <p className="text-sm px-3 py-2 mb-1 border border-gray-700 rounded">Add to library</p>
+            <TooltipContent className="TooltipContent">
+              <p className="text-sm px-3 py-2 mb-1 border border-gray-700 rounded">
+                Add to library
+              </p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>

@@ -77,15 +77,21 @@
 
 .TooltipContent {
   transform-origin: var(--radix-tooltip-content-transform-origin);
-  animation: opacityIn 0.1s ease-in;
+  animation-name: opacityIn;
+  animation-duration: 0.1s;
+  animation-timing-function: ease-in;
 }
 
 .TooltipContent[data-state='open'] {
-  animation: opacityIn 0.1s ease-in;
+  animation-name: opacityIn;
+  animation-duration: 0.1s;
+  animation-timing-function: ease-in;
 }
 
 .TooltipContent[data-state='closed'] {
-  animation: opacityOut 0.1s ease-out;
+  animation-name: opacityOut;
+  animation-duration: 0.1s;
+  animation-timing-function: ease-out;
 }
 
 @keyframes opacityIn {
