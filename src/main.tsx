@@ -7,6 +7,7 @@ import { Footer } from "./components/general/footer-section";
 import { NavigationBarMenu } from "./components/general/navigation-bar-menu";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { LoginPage } from "./pages/login";
+import { ContactoPage } from "./pages/contacto";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/contacto" element={<ContactoPage />} />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
         </div>

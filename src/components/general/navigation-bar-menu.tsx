@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { useToast } from "@/components/ui/use-toast";
 import { Link } from "react-router-dom";
+import logoImg from "@/assets/images/xi-logo.svg";
 
 export function NavigationBarMenu() {
   const { toast } = useToast();
@@ -16,16 +17,23 @@ export function NavigationBarMenu() {
       <NavigationMenuList>
         <NavigationMenuItem className="cursor-pointer">
           <Link to="/">
-            <NavigationMenuLink
-              className={navigationMenuTriggerStyle()}
+            <img
+              src={logoImg}
+              alt="Logo"
+              className="h-10 w-auto m-1 cursor-pointer"
               onClick={() => {
                 toast({
                   title: "Hey",
                   description: ":D",
                 });
               }}
-            >
-              Home
+            />
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem className="cursor-pointer">
+          <Link to="/contacto">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Contacto
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
