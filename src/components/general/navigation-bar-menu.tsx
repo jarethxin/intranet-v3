@@ -11,7 +11,7 @@ import logoImg from "@/assets/images/xi-logo.svg";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const useAuth = () => {
-  return { isAuthenticated: true, user: { name: "John Doe", avatar: "" } };
+  return { isAuthenticated: false, user: { name: "John Doe", avatar: "" } };
 };
 
 export function NavigationBarMenu() {
@@ -45,24 +45,31 @@ export function NavigationBarMenu() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            <NavigationMenuItem className="cursor-pointer">
+          </NavigationMenuList>
+        </NavigationMenu>
+        <div className="flex items-center space-x-4">
+          {isAuthenticated ? (
+            <div className="flex items-center space-x-2">
+              <span className="font-medium">{user.name}</span>
+              <Avatar>
+                <AvatarImage src={user.avatar} />
+                <AvatarFallback>{`${user.name
+                  .toUpperCase()
+                  .charAt(0)}${user.name
+                  .toUpperCase()
+                  .charAt(user.name.indexOf(" ") + 1)}`}</AvatarFallback>
+              </Avatar>
+            </div>
+          ) : (
+            <NavigationMenu className="flex-grow">
               <Link to="/login">
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Login
                 </NavigationMenuLink>
               </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-        {isAuthenticated && (
-          <div className="flex items-center space-x-2">
-            <span className="font-medium">{user.name}</span>
-            <Avatar>
-              <AvatarImage src={user.avatar} />
-              <AvatarFallback>{`${user.name.toUpperCase().charAt(0)}${user.name.toUpperCase().charAt(user.name.indexOf(" ") + 1)}`}</AvatarFallback>
-            </Avatar>
-          </div>
-        )}
+            </NavigationMenu>
+          )}
+        </div>
       </div>
     </div>
   );
