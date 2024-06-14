@@ -8,15 +8,21 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import { Link } from "react-router-dom";
 import logoImg from "@/assets/images/xi-logo.svg";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+
+const useAuth = () => {
+  return { isAuthenticated: true, user: { name: "John Doe", avatar: "" } };
+};
 
 export function NavigationBarMenu() {
   const { toast } = useToast();
+  const { isAuthenticated, user } = useAuth();
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-white bg-opacity-70">
-      <div className="container mx-auto flex items-center space-x-4 px-4">
+    <div className="sticky top-0 z-50 w-full bg-white bg-opacity-90">
+      <div className="container mx-auto flex items-center justify-between px-4">
         <NavigationMenu className="flex-grow">
-          <NavigationMenuList className="flex items-center space-x-4">
+          <NavigationMenuList className="flex items-center space-x-4 flex-wrap">
             <NavigationMenuItem className="cursor-pointer">
               <Link to="/">
                 <img
@@ -48,6 +54,15 @@ export function NavigationBarMenu() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+        {isAuthenticated && (
+          <div className="flex items-center space-x-2">
+            <span className="font-medium">{user.name}</span>
+            <Avatar>
+              <AvatarImage src={user.avatar} />
+              <AvatarFallback>{`${user.name.toUpperCase().charAt(0)}${user.name.toUpperCase().charAt(user.name.indexOf(" ") + 1)}`}</AvatarFallback>
+            </Avatar>
+          </div>
+        )}
       </div>
     </div>
   );
