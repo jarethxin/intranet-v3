@@ -39,11 +39,12 @@ export function NavigationBarMenu() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem className="cursor-pointer">
-              <Link to="/contacto">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Contacto
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
+                href="/contacto"
+              >
+                Contacto
+              </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
@@ -62,11 +63,12 @@ export function NavigationBarMenu() {
             </div>
           ) : (
             <NavigationMenu className="flex-grow">
-              <Link to="/login">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Login
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
+                href="/login"
+              >
+                Login
+              </NavigationMenuLink>
             </NavigationMenu>
           )}
         </div>
