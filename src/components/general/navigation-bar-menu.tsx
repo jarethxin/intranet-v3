@@ -41,7 +41,7 @@ export function NavigationBarMenu() {
             <NavigationMenuItem className="cursor-pointer">
               <NavigationMenuLink
                 className={navigationMenuTriggerStyle()}
-                href="/contacto"
+                href="/contact"
               >
                 Contacto
               </NavigationMenuLink>

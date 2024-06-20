@@ -8,7 +8,9 @@ import { NavigationBarMenu } from "./components/general/navigation-bar-menu";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { LoginPage } from "./pages/login";
 import { ContactoPage } from "./pages/contacto";
-import NoEncontradoPage from "./pages/no-encontrado";
+import { NoEncontradoPage } from "./pages/no-encontrado";
+import { NuevoUsuarioPage } from "./pages/nuevo-usuario";
+import { ForgotPasswordPage } from "./pages/forgot-password";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -19,8 +21,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<NoEncontradoPage />} />
-            <Route path="/contacto" element={<ContactoPage />} />
+            <Route path="/contact" element={<ContactoPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<NuevoUsuarioPage />} />
+            <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
           </Routes>
         </div>
         <Footer />

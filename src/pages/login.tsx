@@ -32,32 +32,32 @@ export function LoginPage() {
   return (
     <section className="bg-gray-700 min-h-screen flex items-center justify-center py-20">
       <form className="mx-auto max-w-sm" onSubmit={handleSubmit(onSubmit)}>
-        <Card>
+        <Card className="px-5">
           <CardHeader>
             <CardTitle className="text-2xl">Login</CardTitle>
-            <CardDescription>
-              Coloca tus credenciales para comenzar 😁
-            </CardDescription>
+            <CardDescription className="text-center">¡Hola!</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-4">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
-                  id="email"
                   type="email"
+                  {...register("email", { required: true })}
                   placeholder="usuario@dominio.com"
-                  required
                 />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">Contraseña</Label>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  type="password"
+                  {...register("password", { required: true })}
+                />
                 <div className="flex items-center">
                   <Link
-                    to="#"
+                    to="/forgotpassword"
                     className="ml-auto inline-block text-sm underline"
                     onClick={() => console.log("Forgot password clicked")}
                   >
@@ -72,7 +72,7 @@ export function LoginPage() {
             <div className="mt-4 text-center text-sm">
               ¿No tienes cuenta?{" "}
               <Link
-                to="#"
+                to="/register"
                 className="underline"
                 onClick={() => console.log("Sign up clicked")}
               >
