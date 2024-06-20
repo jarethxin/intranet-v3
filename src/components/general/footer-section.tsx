@@ -13,7 +13,15 @@ export function Footer() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button className="border border-gray-700 bg-transparent hover:bg-gray-700 text-white font-bold rounded">
+              <Button
+                className="border border-gray-700 bg-transparent hover:bg-gray-700 text-white font-bold rounded"
+                onClick={() => {
+                  console.log(
+                    "token almacenado:",
+                    localStorage.getItem("token")
+                  );
+                }}
+              >
                 Hover
               </Button>
             </TooltipTrigger>

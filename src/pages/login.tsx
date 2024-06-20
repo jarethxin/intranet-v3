@@ -8,24 +8,36 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { login } from "@/services/api/apiService";
+
+type LoginFormInputs = {
+  username: string;
+  password: string;
+};
 
 export function LoginPage() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    // formState: { errors },
-  } = useForm();
+    formState: { errors },
+  } = useForm<LoginFormInputs>();
 
-  // const onSubmit = (data) => {
-  const onSubmit = (data: any) => {
-    console.log("Submitted");
+  const onSubmit = async (data: LoginFormInputs) => {
+    try {
+      const response = await login(data.username, data.password);
+      const token = response?.token;
 
-    if (!data) {
-      console.log("No data");
-    } else {
-      console.log(data);
+      if (token) {
+        localStorage.setItem("token", token);
+        navigate("/");
+      } else {
+        throw new Error("No se ha podido obtener el token en la respuesta.");
+      }
+    } catch (error) {
+      console.log(`Error durante el inicio de sesión: ${error}`);
     }
   };
 
@@ -40,11 +52,11 @@ export function LoginPage() {
           <CardContent>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="username">Usuario</Label>
                 <Input
-                  type="email"
-                  {...register("email", { required: true })}
-                  placeholder="usuario@dominio.com"
+                  type="text"
+                  {...register("username", { required: true })}
+                  placeholder="usuario"
                 />
               </div>
               <div className="grid gap-2">
