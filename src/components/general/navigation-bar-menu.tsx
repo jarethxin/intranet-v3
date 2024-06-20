@@ -9,14 +9,12 @@ import { useToast } from "@/components/ui/use-toast";
 import { Link } from "react-router-dom";
 import logoImg from "@/assets/images/xi-logo.svg";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { useAuthContext } from "@/context/authContext";
 
-const useAuth = () => {
-  return { isAuthenticated: false, user: { name: "John Doe", avatar: "" } };
-};
 
 export function NavigationBarMenu() {
   const { toast } = useToast();
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, logout } = useAuthContext();
 
   return (
     <div className="sticky top-0 z-50 w-full bg-white bg-opacity-90">

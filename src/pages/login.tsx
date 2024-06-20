@@ -10,7 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { login } from "@/services/api/apiService";
+import useAuth, { User } from "@/services/authService";
+import { useAuthContext } from "@/context/authContext";
 
 type LoginFormInputs = {
   username: string;
@@ -18,26 +19,22 @@ type LoginFormInputs = {
 };
 
 export function LoginPage() {
+  // const { login } = useAuth();
+  const { login } = useAuthContext();
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormInputs>();
+  const { register, handleSubmit } = useForm<LoginFormInputs>();
 
   const onSubmit = async (data: LoginFormInputs) => {
     try {
-      const response = await login(data.username, data.password);
-      const token = response?.token;
+      const success = await login(data.username, data.password);
 
-      if (token) {
-        localStorage.setItem("token", token);
+      if (success) {
         navigate("/");
       } else {
-        throw new Error("No se ha podido obtener el token en la respuesta.");
+        throw new Error("No hubo respuesta exitosa");
       }
     } catch (error) {
-      console.log(`Error durante el inicio de sesión: ${error}`);
+      console.log(`LoginPage: onSubmit | Error durante el inicio de sesión: ${error}`);
     }
   };
 
