@@ -15,11 +15,11 @@ export function LoginPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
-  // const onSubmit = (data: any) => {
-  const onSubmit = (data) => {
+  // const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     console.log("Submitted");
 
     if (!data) {
