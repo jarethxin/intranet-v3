@@ -11,7 +11,6 @@ import logoImg from "@/assets/images/xi-logo.svg";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useAuthContext } from "@/context/authContext";
 
-
 export function NavigationBarMenu() {
   const { toast } = useToast();
   const { isAuthenticated, user, logout } = useAuthContext();
@@ -58,6 +57,7 @@ export function NavigationBarMenu() {
                   .toUpperCase()
                   .charAt(user.name.indexOf(" ") + 1)}`}</AvatarFallback>
               </Avatar>
+              <button onClick={logout}>Logout</button>
             </div>
           ) : (
             <NavigationMenu className="flex-grow">
