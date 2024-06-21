@@ -10,7 +10,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import useAuth, { User } from "@/services/authService";
 import { useAuthContext } from "@/context/authContext";
 
 type LoginFormInputs = {
@@ -19,7 +18,6 @@ type LoginFormInputs = {
 };
 
 export function LoginPage() {
-  // const { login } = useAuth();
   const { login } = useAuthContext();
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<LoginFormInputs>();

@@ -31,7 +31,7 @@ const useAuth = (): AuthService => {
         throw new Error("No se ha podido obtener el token en la respuesta.");
       }
     } catch (error) {
-      console.log(`AuthService:login | Error durante el inicio de sesión: ${error}`);
+      console.log(`AuthService: login | Error durante el inicio de sesión: ${error}`);
       return false;
     }
   };

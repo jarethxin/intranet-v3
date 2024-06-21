@@ -6,14 +6,28 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { useToast } from "@/components/ui/use-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logoImg from "@/assets/images/xi-logo.svg";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useAuthContext } from "@/context/authContext";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function NavigationBarMenu() {
   const { toast } = useToast();
   const { isAuthenticated, user, logout } = useAuthContext();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <div className="sticky top-0 z-50 w-full bg-white bg-opacity-90">
@@ -49,15 +63,28 @@ export function NavigationBarMenu() {
           {isAuthenticated ? (
             <div className="flex items-center space-x-2">
               <span className="font-medium">{user.name}</span>
-              <Avatar>
-                <AvatarImage src={user.avatar} />
-                <AvatarFallback>{`${user.name
-                  .toUpperCase()
-                  .charAt(0)}${user.name
-                  .toUpperCase()
-                  .charAt(user.name.indexOf(" ") + 1)}`}</AvatarFallback>
-              </Avatar>
-              <button onClick={logout}>Logout</button>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Avatar>
+                    <AvatarImage src={user.avatar} />
+                    <AvatarFallback>{`${user.name
+                      .toUpperCase()
+                      .charAt(0)}${user.name
+                      .toUpperCase()
+                      .charAt(user.name.indexOf(" ") + 1)}`}</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Perfil</DropdownMenuItem>
+                  <DropdownMenuItem>Ajustes</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Ayuda</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleLogout}>Cerrar sesión</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           ) : (
             <NavigationMenu className="flex-grow">
