@@ -62,16 +62,16 @@ export function NavigationBarMenu() {
         <div className="flex items-center space-x-4">
           {isAuthenticated ? (
             <div className="flex items-center space-x-2">
-              <span className="font-medium">{user.name}</span>
+              <span className="font-medium">{user?.name}</span>
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <Avatar>
-                    <AvatarImage src={user.avatar} />
-                    <AvatarFallback>{`${user.name
+                    <AvatarImage src={user?.avatar} />
+                    <AvatarFallback>{`${user?.name
                       .toUpperCase()
-                      .charAt(0)}${user.name
+                      .charAt(0)}${user?.name
                       .toUpperCase()
-                      .charAt(user.name.indexOf(" ") + 1)}`}</AvatarFallback>
+                      .charAt(user?.name.indexOf(" ") + 1)}`}</AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
@@ -82,7 +82,9 @@ export function NavigationBarMenu() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>Ayuda</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout}>Cerrar sesión</DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleLogout}>
+                    Cerrar sesión
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>

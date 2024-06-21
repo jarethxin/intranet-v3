@@ -18,21 +18,26 @@ type LoginFormInputs = {
 };
 
 export function LoginPage() {
-  const { login } = useAuthContext();
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm<LoginFormInputs>();
+  const { login } = useAuthContext();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormInputs>();
 
   const onSubmit = async (data: LoginFormInputs) => {
     try {
       const success = await login(data.username, data.password);
-
       if (success) {
         navigate("/");
       } else {
         throw new Error("No hubo respuesta exitosa");
       }
     } catch (error) {
-      console.log(`LoginPage: onSubmit | Error durante el inicio de sesión: ${error}`);
+      console.log(
+        `LoginPage: onSubmit | Error durante el inicio de sesión: ${error}`
+      );
     }
   };
 

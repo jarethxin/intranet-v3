@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { login as apiLogin } from "@/services/api/apiService";
+import { login as apiLogin } from "@/services/apiService";
 
 export interface User {
   name: string;

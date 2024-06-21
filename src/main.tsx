@@ -15,8 +15,8 @@ import { AuthProvider } from "./context/authContext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <div className="flex flex-col min-h-screen">
           <NavigationBarMenu />
           <div className="flex-grow">
@@ -32,7 +32,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Footer />
           <Toaster />
         </div>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   </React.StrictMode>
 );
