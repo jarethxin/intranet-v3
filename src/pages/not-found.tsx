@@ -1,4 +1,4 @@
-export function NoEncontradoPage() {
+export function NotFoundPage() {
   return (
     <section className="bg-gray-800 text-white py-80">
       <div className="container mx-auto px-4 text-center">

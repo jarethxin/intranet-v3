@@ -40,12 +40,6 @@ export function NavigationBarMenu() {
                   src={logoImg}
                   alt="Logo"
                   className="h-10 w-auto m-1 cursor-pointer"
-                  onClick={() => {
-                    toast({
-                      title: "Hey",
-                      description: ":D",
-                    });
-                  }}
                 />
               </Link>
             </NavigationMenuItem>

@@ -23,6 +23,7 @@ export function LoginPage() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<LoginFormInputs>();
 
@@ -32,12 +33,19 @@ export function LoginPage() {
       if (success) {
         navigate("/");
       } else {
-        throw new Error("No hubo respuesta exitosa");
+        setError("password", {
+          type: "manual",
+          message: "Usuario o contraseña incorrectos.",
+        });
       }
     } catch (error) {
       console.log(
         `LoginPage: onSubmit | Error durante el inicio de sesión: ${error}`
       );
+      setError("password", {
+        type: "manual",
+        message: "Error durante el inicio de sesión, intene de nuevo.",
+      });
     }
   };
 
@@ -58,6 +66,9 @@ export function LoginPage() {
                   {...register("username", { required: true })}
                   placeholder="usuario"
                 />
+                {errors.username && (
+                  <p className="text-sm text-red-500">{errors.username.message}</p>
+                )}
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
@@ -67,6 +78,9 @@ export function LoginPage() {
                   type="password"
                   {...register("password", { required: true })}
                 />
+                {errors.password && (
+                  <p className="text-sm text-red-500">{errors.password.message}</p>
+                )}
                 <div className="flex items-center">
                   <Link
                     to="/forgotpassword"

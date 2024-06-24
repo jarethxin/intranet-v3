@@ -7,11 +7,12 @@ import { Footer } from "./components/general/footer-section";
 import { NavigationBarMenu } from "./components/general/navigation-bar-menu";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { LoginPage } from "./pages/login";
-import { ContactoPage } from "./pages/contacto";
-import { NoEncontradoPage } from "./pages/no-encontrado";
-import { NuevoUsuarioPage } from "./pages/nuevo-usuario";
+import { ContactPage } from "./pages/contact";
+import { NotFoundPage } from "./pages/not-found";
+import { RegisterPage } from "./pages/register";
 import { ForgotPasswordPage } from "./pages/forgot-password";
 import { AuthProvider } from "./context/authContext";
+import { ReportsPage } from "./pages/reports";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -22,11 +23,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <div className="flex-grow">
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="*" element={<NoEncontradoPage />} />
-              <Route path="/contact" element={<ContactoPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<NuevoUsuarioPage />} />
+              <Route path="/register" element={<RegisterPage />} />
               <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+              <Route path="/reports" element={<ReportsPage />} />
             </Routes>
           </div>
           <Footer />
