@@ -33,12 +33,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   ): Promise<boolean> => {
     try {
       const response = await apiLogin(username, password);
+      const userId = response?.userId;
       const token = response?.token;
 
       if (token) {
         localStorage.setItem("token", token);
         setIsAuthenticated(true);
-        setUser({ name: "Usuario Loggeado", avatar: "" });
+        // setUser({ name: "Usuario Loggeado", avatar: "" });
+        setUser({ name: `User ${userId}`, avatar: "" });
         return true;
       } else {
         throw new Error("No se ha podido obtener el token.");

@@ -20,12 +20,14 @@ const useAuth = (): AuthService => {
   const login = async (username: string, password: string): Promise<boolean> => {
     try {
       const response = await apiLogin(username, password);
+      const userId = response?.userId;
       const token = response?.token;
 
       if (token) {
         localStorage.setItem("token", token);
         setIsAuthenticated(true);
-        setUser({ name: "Usuario Loggeado", avatar: "" }); // es necesario obtener nombre mediante otra llamada al api o desde la respuesta del login
+        // setUser({ name: "Usuario Loggeado", avatar: "" }); // es necesario obtener nombre mediante otra llamada al api o desde la respuesta del login
+        setUser({ name: `User ${userId}`, avatar: "" }); // es necesario obtener nombre mediante otra llamada al api o desde la respuesta del login
         return true;
       } else {
         throw new Error("No se ha podido obtener el token en la respuesta.");
