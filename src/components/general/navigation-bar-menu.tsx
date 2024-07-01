@@ -51,6 +51,14 @@ export function NavigationBarMenu() {
                 Contacto
               </NavigationMenuLink>
             </NavigationMenuItem>
+            <NavigationMenuItem className="cursor-pointer">
+              <NavigationMenuLink
+                className={navigationMenuTriggerStyle()}
+                href="/gps"
+              >
+                GPS
+              </NavigationMenuLink>
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
         <div className="flex items-center space-x-4">

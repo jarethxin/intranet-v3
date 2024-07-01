@@ -13,6 +13,7 @@ import { RegisterPage } from "./pages/register";
 import { ForgotPasswordPage } from "./pages/forgot-password";
 import { AuthProvider } from "./context/authContext";
 import { ReportsPage } from "./pages/reports";
+import { GPSPage } from "./pages/gps";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -29,6 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
               <Route path="/reports" element={<ReportsPage />} />
+              <Route path="/gps" element={<GPSPage />} />
             </Routes>
           </div>
           <Footer />

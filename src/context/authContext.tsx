@@ -23,7 +23,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsAuthenticated(true);
-      setUser({ name: "Usuario Loggeado", avatar: "" });
+
+      if (sessionStorage.getItem("userName")) {
+        setUser({ name: sessionStorage.getItem("userName")!, avatar: "" }); 
+      } else{
+        setUser({ name: "", avatar: "" }); 
+      }
     }
   }, []);
 
@@ -39,14 +44,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (token) {
         localStorage.setItem("token", token);
         setIsAuthenticated(true);
-        // setUser({ name: "Usuario Loggeado", avatar: "" });
+        
         setUser({ name: `User ${userId}`, avatar: "" });
+        sessionStorage.setItem("userName", `User ${userId}`);
+        
         return true;
       } else {
         throw new Error("No se ha podido obtener el token.");
       }
     } catch (error) {
-      console.log(`Error durante el inicio de sesión: ${error}`);
+      console.log(`AuthContext: Login | Error durante el inicio de sesión: ${error}`);
       return false;
     }
   };
@@ -54,10 +61,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logout = (): void => {
     try {
       localStorage.removeItem("token");
+      sessionStorage.removeItem("userName");
+
       setIsAuthenticated(false);
       setUser(null);
     } catch (error) {
-      console.log(`Error durante el cierre de sesión: ${error}`);
+      console.log(`AuthContext: Logout | Error durante el cierre de sesión: ${error}`);
     }
   };
 
@@ -71,7 +80,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 export const useAuthContext = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuthContext must be used within an AuthProvider");
+    throw new Error("AuthContext | useAuthContext must be used within an AuthProvider");
   }
   return context;
 };
